@@ -1,0 +1,131 @@
+hr {
+    height: 1px;
+    border: none;
+    background-color: var(--hr-color);
+}
+
+.section {
+    /* border: 1px solid #ccc; */
+    background: var(--section-background-color);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin: 0.5em;
+
+    border-radius: var(--border-radius);
+    // overflow: hidden; // breaks position: sticky
+
+    &[data-collapsed="1"] .section-content {
+        display: none;
+    }
+    &.is-fullwidth {
+        flex: 1;
+    }
+}
+
+.section-title {
+    font-weight: 700;
+    background: var(--section-title-background-color);
+    color: #fff;
+    padding: 5px 10px;
+
+    cursor: pointer;
+
+    h1 {
+        font-size: 1.2em;
+        margin: 0;
+        text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        color: #fff;
+    }
+
+    &.is-expandable {
+        &:hover {
+            background: var(--section-title-hover-background-color);
+        }
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #fff, 0 0 0 4px #5098f7;
+        }
+    }
+}
+
+.section-content {
+    padding: 10px;
+}
+
+.container {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    .section {
+        flex-grow: 1;
+    }
+
+    &.vertical {
+        display: block;
+    }
+}
+
+.columns {
+    display: flex;
+    gap: 1em;
+    &.is-multiline {
+        flex-wrap: wrap;
+    }
+    .column {
+        flex-grow: 1;
+    }
+}
+
+.block {
+    padding-bottom: 1rem;
+}
+
+.splitter {
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    flex-grow: 1;
+    margin-left: var(--sidemenu-width);
+    height: 100vh;
+}
+
+.px-1 {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+.px-2 {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.errors {
+    background-color: #b62d2d;
+    color: #fff;
+    padding: 1em;
+    margin: 0.5em 0.5em 0 0.5em;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0.5em 0 0 0;
+    }
+}
+
+// padding loop
+@for $i from 1 through 10 {
+    .padding-#{$i} {
+        padding: #{$i}em;
+    }
+}
+
+.list {
+    padding: 1em 1.5em;
+    margin: 0;
+    &.less-padding {
+        padding: 0.1em 1.5em;
+    }
+}

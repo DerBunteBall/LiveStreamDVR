@@ -1,0 +1,139 @@
+@keyframes recording {
+    0% {
+        background-color: #ca1515;
+    }
+    50% {
+        background-color: #7c1717;
+    }
+    100% {
+        background-color: #ca1515;
+    }
+}
+
+@keyframes live {
+    0% {
+        color: #ca1515;
+    }
+    50% {
+        color: #7c1717;
+    }
+    100% {
+        color: #ca1515;
+    }
+}
+
+@keyframes speen {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes ayylien {
+    0% {
+        transform: perspective(500px) rotateY(0deg);
+        text-shadow: 0 0 0 #000;
+    }
+    50% {
+        transform: perspective(500px) rotateY(180deg);
+        text-shadow: 0 0 5px #0f0, 0 0 5px #0f0, 0 0 5px #0f0;
+    }
+    100% {
+        transform: perspective(500px) rotateY(360deg);
+        text-shadow: 0 0 0 #000;
+    }
+}
+
+@keyframes zoom {
+    0% {
+        background-size: 100%;
+    }
+    50% {
+        background-size: 105%;
+    }
+    100% {
+        background-size: 100%;
+    }
+}
+
+
+@keyframes vibrate {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(-50px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+.fadeHeight-enter-active,
+.fadeHeight-leave-active {
+  transition: all 0.2s;
+  max-height: 1000px;
+}
+.fadeHeight-enter,
+.fadeHeight-leave-to
+{
+  opacity: 0;
+  max-height: 0px;
+}
+
+// fade but quicker
+.fadequick-enter-active,
+.fadequick-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fadequick-enter-from,
+.fadequick-leave-to {
+  opacity: 0;
+}
+
+// slide down (change height
+.blinds-enter-active,
+.blinds-leave-active {
+    transition: all 0.3s ease;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.blinds-enter,
+.blinds-enter-from,
+.blinds-leave-to {
+    // opacity: 0;
+    max-height: 0px;
+}

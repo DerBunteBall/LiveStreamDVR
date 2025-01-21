@@ -1,0 +1,14 @@
+test/
+*.json
+!tests/dump.json
+*.line
+*.mp4
+tests/tmp/
+
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
