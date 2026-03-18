@@ -31,3 +31,9 @@ data/config
 data/payloads
 data/backup
 release/
+# Yarn Berry
+**/.yarn/cache
+**/.yarn/unplugged
+**/.yarn/install-state.gz
+**/.pnp.cjs
+**/.pnp.loader.mjs
