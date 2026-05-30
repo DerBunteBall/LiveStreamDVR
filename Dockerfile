@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.4
-FROM node:20-bullseye-slim
+FROM node:22-trixie-slim
 
 # make app folder
 RUN mkdir -p /usr/local/share/twitchautomator \
@@ -28,17 +28,19 @@ RUN apt-get update && apt-get install -y \
     ffmpeg mediainfo \
     python3 python3-pip python3-wheel libxml2-dev libxslt-dev python3-dev \
     bash git curl unzip rclone \
+    pipenv \
     && apt-get clean
 
 # copy over pipenv files and install dependencies for python
 # WORKDIR /usr/local/share/twitchautomator
 COPY ./Pipfile ./Pipfile.lock ./requirements.txt ./binaries.txt /usr/local/share/twitchautomator/
 # install pipenv globally
-RUN pip install pipenv && pip cache purge
+#RUN pip install pipenv && pip cache purge
 # switch to node user to install pipenv dependencies
 USER node 
 ENV PATH="${PATH}:/home/node/.local/bin"
 RUN cd /usr/local/share/twitchautomator && \
+    pipenv lock && \
     pipenv install --deploy --ignore-pipfile --verbose && \
     pipenv --version && \
     pipenv run python --version && \
@@ -68,7 +70,7 @@ COPY --chown=node:node --chmod=775 ./common /usr/local/share/twitchautomator/com
 # chat dumper
 COPY --chown=node:node --chmod=775 ./twitch-chat-dumper /usr/local/share/twitchautomator/twitch-chat-dumper
 RUN cd /usr/local/share/twitchautomator/twitch-chat-dumper \
-    && yarn \
+    && yarn install \
     && yarn build \
     && rm -rf node_modules \
     && rm -rf .yarn/cache \
